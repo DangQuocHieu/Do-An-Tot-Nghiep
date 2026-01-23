@@ -37,6 +37,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private PlayerInputs _playerInputs;
     [SerializeField] private Transform _camera;
+    [SerializeField] private Rigidbody _playerRb;
 
     private void Update()
     {
@@ -67,6 +68,7 @@ public class FirstPersonController : MonoBehaviour
         {
             inputDirection = transform.right * _playerInputs.Move.x + transform.forward * _playerInputs.Move.y;
         }
+        _playerRb.linearVelocity = inputDirection * (_currentSpeed * Time.deltaTime);
         _controller.Move(inputDirection * (_currentSpeed * Time.deltaTime));
     }
 
