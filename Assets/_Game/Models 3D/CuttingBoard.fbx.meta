@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a31779539cc9b81428c6e40e31d20f97
+guid: 7ee47b4e9c1fecc4b9e857a554ca48a5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: tofu
-    second: {fileID: 2800000, guid: 5f0a84b5c1e2a6348a647ce944648743, type: 3}
+      name: wooden cutting board
+    second: {fileID: 2800000, guid: bd609b2832d090b459ae398fa2e69382, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -35,7 +35,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1
@@ -81,7 +81,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
