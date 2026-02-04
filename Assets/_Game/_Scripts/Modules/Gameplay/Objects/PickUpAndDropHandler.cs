@@ -26,11 +26,8 @@ public class PickupHandler : MonoBehaviour
                 {
                     if(hit.collider.TryGetComponent<InteractableObjectBase>(out InteractableObjectBase interactableObject))
                     {
-                        if (interactableObject.CanGrab)
-                        {
-                            _objectInHand = interactableObject;
-                            interactableObject.OnPickup(_grabObjectPoint);
-                        }
+                        _objectInHand = interactableObject;
+                        interactableObject.OnPickup(_grabObjectPoint);
                     }
                 }
             }
@@ -38,7 +35,11 @@ public class PickupHandler : MonoBehaviour
             {
                 if (Physics.Raycast(_camera.position, _camera.forward, out RaycastHit hit, _pickupRange))
                 {
-                    if(hit.collider.TryGetComponent<InteractableObjectBase>(out InteractableObjectBase other))
+                    if(hit.collider.gameObject == _objectInHand.gameObject)
+                    {
+                        return;
+                    }
+                    else if(hit.collider.TryGetComponent<InteractableObjectBase>(out InteractableObjectBase other))
                     {
                         _objectInHand.InteractWith(other, this);
                     }

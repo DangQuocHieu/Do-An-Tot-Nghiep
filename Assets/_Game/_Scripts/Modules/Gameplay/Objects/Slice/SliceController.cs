@@ -43,8 +43,9 @@ public class SliceController : MonoBehaviour
         lowerHull.AddComponent<MeshCollider>().convex = true;
         var lowerRb = lowerHull.AddComponent<Rigidbody>();
 
-        upperRb.AddForce(Vector3.right * 2f, ForceMode.Impulse);
-        lowerRb.AddForce(Vector3.left * 2f, ForceMode.Impulse);
+        Vector3 pushDirection = transform.right;
+        upperRb.AddForce(pushDirection * 1f, ForceMode.Impulse);
+        lowerRb.AddForce(-pushDirection * 1f, ForceMode.Impulse);
         Destroy(objToSlice.gameObject);
     }
 
