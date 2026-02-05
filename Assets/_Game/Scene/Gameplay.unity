@@ -357,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectRb: {fileID: 74875387}
   _followSpeed: 15
+  _moveSpeed: 10
   _rotationSpeed: 10
   _grabRotation: {x: 0, y: 0, z: 0}
   _cameraTransforms:
@@ -724,6 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectRb: {fileID: 245937528}
   _followSpeed: 15
+  _moveSpeed: 10
   _rotationSpeed: 10
   _grabRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &251948281
@@ -1380,8 +1382,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _objectRb: {fileID: 650228333}
   _followSpeed: 15
+  _moveSpeed: 10
   _rotationSpeed: 10
   _grabRotation: {x: 0, y: 0, z: 0}
+--- !u!65 &650228341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650228330}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.023130402, y: 0.13633151, z: 0.7572103}
+  m_Center: {x: -0.000141975, y: -0.042392798, z: 0.28496942}
 --- !u!1001 &653020795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4355,7 +4379,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
+    - {fileID: 0}
     - {fileID: 5032191583890173294, guid: 4e9cea0920118e246a9d3873ce71c4fe, type: 3}
+    - {fileID: 8006754026681568817, guid: 4e9cea0920118e246a9d3873ce71c4fe, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8143011801941837731, guid: 4e9cea0920118e246a9d3873ce71c4fe, type: 3}
@@ -4365,6 +4391,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8811885014489685273, guid: 4e9cea0920118e246a9d3873ce71c4fe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 650228337}
+    - targetCorrespondingSourceObject: {fileID: 8811885014489685273, guid: 4e9cea0920118e246a9d3873ce71c4fe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 650228341}
   m_SourcePrefab: {fileID: 100100000, guid: 4e9cea0920118e246a9d3873ce71c4fe, type: 3}
 --- !u!1001 &3013506207326571327
 PrefabInstance:
@@ -4863,6 +4892,10 @@ PrefabInstance:
     - target: {fileID: 809869819357743142, guid: 1a29791dd963b39448352b8a605cf9f5, type: 3}
       propertyPath: m_Size.z
       value: 0.1600001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5998628310249761555, guid: 1a29791dd963b39448352b8a605cf9f5, type: 3}
+      propertyPath: m_Drag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6960674264414833109, guid: 1a29791dd963b39448352b8a605cf9f5, type: 3}
       propertyPath: m_LocalScale.x
