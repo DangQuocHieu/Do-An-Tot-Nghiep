@@ -12,6 +12,7 @@ public class CuttingBoard : InteractableObjectBase
     private Vector3 _characterPosition;
     public void EnterCutMode(KnifeObject knife, PickupHandler pickupHandler)
     {
+        MessageManager.SendMessage(new Message(GameMessageType.EnterCutMode));
         knife.gameObject.SetActive(false);
         _characterPosition = pickupHandler.transform.position;
         TurnOnCamera(knife);
@@ -26,6 +27,7 @@ public class CuttingBoard : InteractableObjectBase
         _cuttingCamera.transform.SetParent(transform);
         _slicer.gameObject.SetActive(false);
         knifeObject.gameObject.SetActive(true);
+        MessageManager.SendMessage(new Message(GameMessageType.ExitCutMode));   
     }
 
     private void TurnOnCamera(KnifeObject knife)
@@ -50,4 +52,5 @@ public class CuttingBoard : InteractableObjectBase
         yield return new WaitUntil(() => Input.GetMouseButton(1));
         ExitCutMode(knifeObject);
     }
+
 }

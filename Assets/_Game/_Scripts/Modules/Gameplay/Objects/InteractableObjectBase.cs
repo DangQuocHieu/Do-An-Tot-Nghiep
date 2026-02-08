@@ -6,13 +6,14 @@ using UnityEngine;
 public class InteractableObjectBase : MonoBehaviour
 {
     [Header("Base Properties")]
-    [SerializeField] private Rigidbody _objectRb;
+    [SerializeField] protected Rigidbody _objectRb;
     private Transform _holdObjectPoint;
     private Collider _objectCollider;
     [SerializeField] private float _followSpeed = 15f;
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private Vector3 _grabRotation = Vector3.zero;
+    [SerializeField] protected bool _kinematicWhenIdle = false;
     private float _initialAngularDamping;
     private float _initialLinearDamping;
     private Coroutine _moveToPlaceableSurfaceCoroutine;
@@ -68,11 +69,12 @@ public class InteractableObjectBase : MonoBehaviour
 
     public virtual void OnPickup(Transform holdObjectPoint)
     {
+        _objectRb.isKinematic = false;
         _objectRb.MoveRotation(Quaternion.Euler(_grabRotation));
         _holdObjectPoint = holdObjectPoint;
         _objectCollider.isTrigger = true;
         _objectRb.useGravity = false;
-        _objectRb.linearDamping = 10f;
+        _objectRb.linearDamping = 5f;
         _objectRb.angularDamping = 5f;
         _objectRb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
@@ -98,7 +100,7 @@ public class InteractableObjectBase : MonoBehaviour
         _moveToPlaceableSurfaceCoroutine = StartCoroutine(MoveToPlaceableSurfaceCoroutine(dropPosition));
     }
 
-    private IEnumerator MoveToPlaceableSurfaceCoroutine(Vector3 dropPosition)
+    public virtual IEnumerator MoveToPlaceableSurfaceCoroutine(Vector3 dropPosition)
     {
         
         while (Vector3.Distance(transform.position, dropPosition) >= 0.1f)
@@ -111,6 +113,10 @@ public class InteractableObjectBase : MonoBehaviour
         _objectRb.linearVelocity = Vector3.zero;
         _objectRb.angularVelocity = Vector3.zero;
         _objectRb.useGravity = true;
+        if (_kinematicWhenIdle)
+        {
+            _objectRb.isKinematic = true;
+        }
     }
 
 
